@@ -129,7 +129,8 @@ namespace BlockchainAssignment
 
         private void Btn_CheckBalance_Click(object sender, EventArgs e)
         {
-            UpdateOutput($"{txt_PubKey.Text}\nBalance: {chain.GetBalance(txt_PubKey.Text)} SwagCoins");
+            string output = $"{txt_PubKey.Text}\nBalance: {chain.GetBalance(txt_PubKey.Text)} SwagCoins\n{chain.GetAddTrans(txt_PubKey.Text)}";
+            UpdateOutput(output);
         }
     }
 }

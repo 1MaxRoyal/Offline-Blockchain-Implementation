@@ -33,28 +33,28 @@
             this.txt_BlockIndex = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.btn_GenWallet = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.Btn_CheckBalance = new System.Windows.Forms.Button();
+            this.btn_ValidateWallet = new System.Windows.Forms.Button();
+            this.btn_GenWallet = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txt_PubKey = new System.Windows.Forms.TextBox();
             this.txt_PrivKey = new System.Windows.Forms.TextBox();
-            this.btn_ValidateWallet = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.btn_CreateTransaction = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.txt_Amount = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.txt_Fee = new System.Windows.Forms.TextBox();
-            this.txt_ReceiverKey = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btn_NewBlock = new System.Windows.Forms.Button();
-            this.btn_AllBlocks = new System.Windows.Forms.Button();
-            this.btn_PendTrans = new System.Windows.Forms.Button();
-            this.txt_MinerKey = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.txt_PubKey = new System.Windows.Forms.TextBox();
             this.Btn_ValidateChain = new System.Windows.Forms.Button();
-            this.Btn_CheckBalance = new System.Windows.Forms.Button();
+            this.btn_PendTrans = new System.Windows.Forms.Button();
+            this.txt_ReceiverKey = new System.Windows.Forms.TextBox();
+            this.txt_MinerKey = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txt_Fee = new System.Windows.Forms.TextBox();
+            this.txt_Amount = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.btn_NewBlock = new System.Windows.Forms.Button();
+            this.btn_CreateTransaction = new System.Windows.Forms.Button();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.btn_AllBlocks = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // outputBox
@@ -109,16 +109,6 @@
             this.textBox2.TabIndex = 4;
             this.textBox2.Text = "BLOCKS";
             // 
-            // btn_GenWallet
-            // 
-            this.btn_GenWallet.Location = new System.Drawing.Point(245, 435);
-            this.btn_GenWallet.Name = "btn_GenWallet";
-            this.btn_GenWallet.Size = new System.Drawing.Size(110, 23);
-            this.btn_GenWallet.TabIndex = 5;
-            this.btn_GenWallet.Text = "New Wallet";
-            this.btn_GenWallet.UseVisualStyleBackColor = true;
-            this.btn_GenWallet.Click += new System.EventHandler(this.Btn_GenWallet_Click);
-            // 
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -130,6 +120,36 @@
             this.textBox3.Size = new System.Drawing.Size(167, 23);
             this.textBox3.TabIndex = 6;
             this.textBox3.Text = "WALLETS";
+            // 
+            // Btn_CheckBalance
+            // 
+            this.Btn_CheckBalance.Location = new System.Drawing.Point(477, 434);
+            this.Btn_CheckBalance.Name = "Btn_CheckBalance";
+            this.Btn_CheckBalance.Size = new System.Drawing.Size(125, 24);
+            this.Btn_CheckBalance.TabIndex = 27;
+            this.Btn_CheckBalance.Text = "Check Balance";
+            this.Btn_CheckBalance.UseVisualStyleBackColor = true;
+            this.Btn_CheckBalance.Click += new System.EventHandler(this.Btn_CheckBalance_Click);
+            // 
+            // btn_ValidateWallet
+            // 
+            this.btn_ValidateWallet.Location = new System.Drawing.Point(361, 434);
+            this.btn_ValidateWallet.Name = "btn_ValidateWallet";
+            this.btn_ValidateWallet.Size = new System.Drawing.Size(110, 23);
+            this.btn_ValidateWallet.TabIndex = 12;
+            this.btn_ValidateWallet.Text = "Validate Wallet";
+            this.btn_ValidateWallet.UseVisualStyleBackColor = true;
+            this.btn_ValidateWallet.Click += new System.EventHandler(this.Btn_ValidateWallet_Click);
+            // 
+            // btn_GenWallet
+            // 
+            this.btn_GenWallet.Location = new System.Drawing.Point(245, 435);
+            this.btn_GenWallet.Name = "btn_GenWallet";
+            this.btn_GenWallet.Size = new System.Drawing.Size(110, 23);
+            this.btn_GenWallet.TabIndex = 5;
+            this.btn_GenWallet.Text = "New Wallet";
+            this.btn_GenWallet.UseVisualStyleBackColor = true;
+            this.btn_GenWallet.Click += new System.EventHandler(this.Btn_GenWallet_Click);
             // 
             // label1
             // 
@@ -149,15 +169,6 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Private Key";
             // 
-            // txt_PubKey
-            // 
-            this.txt_PubKey.Location = new System.Drawing.Point(336, 463);
-            this.txt_PubKey.Multiline = true;
-            this.txt_PubKey.Name = "txt_PubKey";
-            this.txt_PubKey.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txt_PubKey.Size = new System.Drawing.Size(463, 22);
-            this.txt_PubKey.TabIndex = 9;
-            // 
             // txt_PrivKey
             // 
             this.txt_PrivKey.Location = new System.Drawing.Point(336, 488);
@@ -167,15 +178,126 @@
             this.txt_PrivKey.Size = new System.Drawing.Size(463, 22);
             this.txt_PrivKey.TabIndex = 10;
             // 
-            // btn_ValidateWallet
+            // txt_PubKey
             // 
-            this.btn_ValidateWallet.Location = new System.Drawing.Point(361, 434);
-            this.btn_ValidateWallet.Name = "btn_ValidateWallet";
-            this.btn_ValidateWallet.Size = new System.Drawing.Size(110, 23);
-            this.btn_ValidateWallet.TabIndex = 12;
-            this.btn_ValidateWallet.Text = "Validate Wallet";
-            this.btn_ValidateWallet.UseVisualStyleBackColor = true;
-            this.btn_ValidateWallet.Click += new System.EventHandler(this.Btn_ValidateWallet_Click);
+            this.txt_PubKey.Location = new System.Drawing.Point(336, 463);
+            this.txt_PubKey.Multiline = true;
+            this.txt_PubKey.Name = "txt_PubKey";
+            this.txt_PubKey.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txt_PubKey.Size = new System.Drawing.Size(463, 22);
+            this.txt_PubKey.TabIndex = 9;
+            // 
+            // Btn_ValidateChain
+            // 
+            this.Btn_ValidateChain.Location = new System.Drawing.Point(808, 408);
+            this.Btn_ValidateChain.Name = "Btn_ValidateChain";
+            this.Btn_ValidateChain.Size = new System.Drawing.Size(101, 47);
+            this.Btn_ValidateChain.TabIndex = 26;
+            this.Btn_ValidateChain.Text = "Validate Blockchain";
+            this.Btn_ValidateChain.UseVisualStyleBackColor = true;
+            this.Btn_ValidateChain.Click += new System.EventHandler(this.Btn_ValidateChain_Click);
+            // 
+            // btn_PendTrans
+            // 
+            this.btn_PendTrans.Location = new System.Drawing.Point(808, 537);
+            this.btn_PendTrans.Name = "btn_PendTrans";
+            this.btn_PendTrans.Size = new System.Drawing.Size(101, 47);
+            this.btn_PendTrans.TabIndex = 23;
+            this.btn_PendTrans.Text = "Get Pending Transactions";
+            this.btn_PendTrans.UseVisualStyleBackColor = true;
+            this.btn_PendTrans.Click += new System.EventHandler(this.btn_PendTrans_Click);
+            // 
+            // txt_ReceiverKey
+            // 
+            this.txt_ReceiverKey.Location = new System.Drawing.Point(339, 564);
+            this.txt_ReceiverKey.Multiline = true;
+            this.txt_ReceiverKey.Name = "txt_ReceiverKey";
+            this.txt_ReceiverKey.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txt_ReceiverKey.Size = new System.Drawing.Size(463, 22);
+            this.txt_ReceiverKey.TabIndex = 20;
+            // 
+            // txt_MinerKey
+            // 
+            this.txt_MinerKey.Location = new System.Drawing.Point(339, 540);
+            this.txt_MinerKey.Multiline = true;
+            this.txt_MinerKey.Name = "txt_MinerKey";
+            this.txt_MinerKey.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txt_MinerKey.Size = new System.Drawing.Size(463, 22);
+            this.txt_MinerKey.TabIndex = 25;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(242, 567);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(92, 17);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Receiver Key";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(242, 543);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(71, 17);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Miner Key";
+            // 
+            // txt_Fee
+            // 
+            this.txt_Fee.Location = new System.Drawing.Point(182, 565);
+            this.txt_Fee.Name = "txt_Fee";
+            this.txt_Fee.Size = new System.Drawing.Size(52, 22);
+            this.txt_Fee.TabIndex = 17;
+            // 
+            // txt_Amount
+            // 
+            this.txt_Amount.Location = new System.Drawing.Point(182, 540);
+            this.txt_Amount.Name = "txt_Amount";
+            this.txt_Amount.Size = new System.Drawing.Size(52, 22);
+            this.txt_Amount.TabIndex = 15;
+            // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox5.Location = new System.Drawing.Point(127, 543);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(51, 15);
+            this.textBox5.TabIndex = 16;
+            this.textBox5.Text = "Amount:";
+            // 
+            // textBox7
+            // 
+            this.textBox7.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox7.Location = new System.Drawing.Point(127, 568);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
+            this.textBox7.Size = new System.Drawing.Size(39, 15);
+            this.textBox7.TabIndex = 18;
+            this.textBox7.Text = "Fee:";
+            // 
+            // btn_NewBlock
+            // 
+            this.btn_NewBlock.Location = new System.Drawing.Point(108, 431);
+            this.btn_NewBlock.Name = "btn_NewBlock";
+            this.btn_NewBlock.Size = new System.Drawing.Size(88, 45);
+            this.btn_NewBlock.TabIndex = 21;
+            this.btn_NewBlock.Text = "Create New Block";
+            this.btn_NewBlock.UseVisualStyleBackColor = true;
+            this.btn_NewBlock.Click += new System.EventHandler(this.Btn_NewBlock_Click);
+            // 
+            // btn_CreateTransaction
+            // 
+            this.btn_CreateTransaction.Location = new System.Drawing.Point(14, 540);
+            this.btn_CreateTransaction.Name = "btn_CreateTransaction";
+            this.btn_CreateTransaction.Size = new System.Drawing.Size(101, 47);
+            this.btn_CreateTransaction.TabIndex = 14;
+            this.btn_CreateTransaction.Text = "Create Transaction";
+            this.btn_CreateTransaction.UseVisualStyleBackColor = true;
+            this.btn_CreateTransaction.Click += new System.EventHandler(this.Btn_CreateTransaction_Click);
             // 
             // textBox4
             // 
@@ -189,80 +311,6 @@
             this.textBox4.TabIndex = 13;
             this.textBox4.Text = "TRANSACTIONS";
             // 
-            // btn_CreateTransaction
-            // 
-            this.btn_CreateTransaction.Location = new System.Drawing.Point(14, 540);
-            this.btn_CreateTransaction.Name = "btn_CreateTransaction";
-            this.btn_CreateTransaction.Size = new System.Drawing.Size(101, 47);
-            this.btn_CreateTransaction.TabIndex = 14;
-            this.btn_CreateTransaction.Text = "Create Transaction";
-            this.btn_CreateTransaction.UseVisualStyleBackColor = true;
-            this.btn_CreateTransaction.Click += new System.EventHandler(this.Btn_CreateTransaction_Click);
-            // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Location = new System.Drawing.Point(127, 543);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(51, 15);
-            this.textBox5.TabIndex = 16;
-            this.textBox5.Text = "Amount:";
-            // 
-            // txt_Amount
-            // 
-            this.txt_Amount.Location = new System.Drawing.Point(182, 540);
-            this.txt_Amount.Name = "txt_Amount";
-            this.txt_Amount.Size = new System.Drawing.Size(52, 22);
-            this.txt_Amount.TabIndex = 15;
-            // 
-            // textBox7
-            // 
-            this.textBox7.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.Location = new System.Drawing.Point(127, 568);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(39, 15);
-            this.textBox7.TabIndex = 18;
-            this.textBox7.Text = "Fee:";
-            // 
-            // txt_Fee
-            // 
-            this.txt_Fee.Location = new System.Drawing.Point(182, 565);
-            this.txt_Fee.Name = "txt_Fee";
-            this.txt_Fee.Size = new System.Drawing.Size(52, 22);
-            this.txt_Fee.TabIndex = 17;
-            // 
-            // txt_ReceiverKey
-            // 
-            this.txt_ReceiverKey.Location = new System.Drawing.Point(339, 564);
-            this.txt_ReceiverKey.Multiline = true;
-            this.txt_ReceiverKey.Name = "txt_ReceiverKey";
-            this.txt_ReceiverKey.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txt_ReceiverKey.Size = new System.Drawing.Size(463, 22);
-            this.txt_ReceiverKey.TabIndex = 20;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(242, 567);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 17);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "Receiver Key";
-            // 
-            // btn_NewBlock
-            // 
-            this.btn_NewBlock.Location = new System.Drawing.Point(108, 431);
-            this.btn_NewBlock.Name = "btn_NewBlock";
-            this.btn_NewBlock.Size = new System.Drawing.Size(88, 45);
-            this.btn_NewBlock.TabIndex = 21;
-            this.btn_NewBlock.Text = "Create New Block";
-            this.btn_NewBlock.UseVisualStyleBackColor = true;
-            this.btn_NewBlock.Click += new System.EventHandler(this.Btn_NewBlock_Click);
-            // 
             // btn_AllBlocks
             // 
             this.btn_AllBlocks.Location = new System.Drawing.Point(14, 477);
@@ -272,54 +320,6 @@
             this.btn_AllBlocks.Text = "All Blocks";
             this.btn_AllBlocks.UseVisualStyleBackColor = true;
             this.btn_AllBlocks.Click += new System.EventHandler(this.btn_AllBlocks_Click);
-            // 
-            // btn_PendTrans
-            // 
-            this.btn_PendTrans.Location = new System.Drawing.Point(808, 537);
-            this.btn_PendTrans.Name = "btn_PendTrans";
-            this.btn_PendTrans.Size = new System.Drawing.Size(101, 47);
-            this.btn_PendTrans.TabIndex = 23;
-            this.btn_PendTrans.Text = "Get Pending Transactions";
-            this.btn_PendTrans.UseVisualStyleBackColor = true;
-            this.btn_PendTrans.Click += new System.EventHandler(this.btn_PendTrans_Click);
-            // 
-            // txt_MinerKey
-            // 
-            this.txt_MinerKey.Location = new System.Drawing.Point(339, 540);
-            this.txt_MinerKey.Multiline = true;
-            this.txt_MinerKey.Name = "txt_MinerKey";
-            this.txt_MinerKey.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txt_MinerKey.Size = new System.Drawing.Size(463, 22);
-            this.txt_MinerKey.TabIndex = 25;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(242, 543);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 17);
-            this.label4.TabIndex = 24;
-            this.label4.Text = "Miner Key";
-            // 
-            // Btn_ValidateChain
-            // 
-            this.Btn_ValidateChain.Location = new System.Drawing.Point(808, 408);
-            this.Btn_ValidateChain.Name = "Btn_ValidateChain";
-            this.Btn_ValidateChain.Size = new System.Drawing.Size(101, 47);
-            this.Btn_ValidateChain.TabIndex = 26;
-            this.Btn_ValidateChain.Text = "Validate Blockchain";
-            this.Btn_ValidateChain.UseVisualStyleBackColor = true;
-            this.Btn_ValidateChain.Click += new System.EventHandler(this.Btn_ValidateChain_Click);
-            // 
-            // Btn_CheckBalance
-            // 
-            this.Btn_CheckBalance.Location = new System.Drawing.Point(477, 434);
-            this.Btn_CheckBalance.Name = "Btn_CheckBalance";
-            this.Btn_CheckBalance.Size = new System.Drawing.Size(125, 24);
-            this.Btn_CheckBalance.TabIndex = 27;
-            this.Btn_CheckBalance.Text = "Check Balance";
-            this.Btn_CheckBalance.UseVisualStyleBackColor = true;
-            this.Btn_CheckBalance.Click += new System.EventHandler(this.Btn_CheckBalance_Click);
             // 
             // BlockchainApp
             // 
@@ -371,28 +371,28 @@
         private System.Windows.Forms.TextBox txt_BlockIndex;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button btn_GenWallet;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button Btn_CheckBalance;
+        private System.Windows.Forms.Button btn_ValidateWallet;
+        private System.Windows.Forms.Button btn_GenWallet;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt_PubKey;
         private System.Windows.Forms.TextBox txt_PrivKey;
-        private System.Windows.Forms.Button btn_ValidateWallet;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button btn_CreateTransaction;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox txt_Amount;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox txt_Fee;
-        private System.Windows.Forms.TextBox txt_ReceiverKey;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btn_NewBlock;
-        private System.Windows.Forms.Button btn_AllBlocks;
-        private System.Windows.Forms.Button btn_PendTrans;
-        private System.Windows.Forms.TextBox txt_MinerKey;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txt_PubKey;
         private System.Windows.Forms.Button Btn_ValidateChain;
-        private System.Windows.Forms.Button Btn_CheckBalance;
+        private System.Windows.Forms.Button btn_PendTrans;
+        private System.Windows.Forms.TextBox txt_ReceiverKey;
+        private System.Windows.Forms.TextBox txt_MinerKey;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txt_Fee;
+        private System.Windows.Forms.TextBox txt_Amount;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Button btn_NewBlock;
+        private System.Windows.Forms.Button btn_CreateTransaction;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button btn_AllBlocks;
     }
 }
 

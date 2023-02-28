@@ -141,20 +141,45 @@ namespace BlockchainAssignment
                     }
                 }
             }
+            return bal;
+        }
 
-            foreach (Transaction t in TransactionPool)
+        internal string GetAddTrans(string add)
+        {
+            List<Transaction> tempList = new List<Transaction>();
+            List<Transaction> sendList = new List<Transaction>();
+            List<Transaction> recList = new List<Transaction>();
+
+            foreach (Block b in Blocks)
             {
-                if (t.GetRecAdd() == address)
-                {
-                    bal += t.GetAmount();
-                }
-                if (t.GetSendAdd() == address)
-                {
-                    bal -= (t.GetAmount() + t.GetFee());
-                }
+               tempList = b.GetTrans();
+               foreach (Transaction t in tempList)
+               {
+                    if (t.GetSendAdd() == add)
+                    {
+                        sendList.Add(t);
+                    }
+                    if (t.GetRecAdd() == add)
+                    {
+                        recList.Add(t);
+                    }
+               }
             }
 
-            return bal;
+            string text = "\nSent:\n";
+            foreach (Transaction t in sendList)
+            {
+                text += t.GetTransactionInfo();
+                text += "\n";
+            }
+            text += "\nReceived:\n";
+            foreach (Transaction t in recList)
+            {
+                text += t.GetTransactionInfo();
+                text += "\n";
+            }
+
+            return text;
         }
     }
 }

@@ -36,8 +36,11 @@ namespace BlockchainAssignment
                 this.rBlock += GetReward(t);
                 this.fBlock += t.GetFee();
             }
-            Transaction trans = new Transaction("Mine Rewards", "", miner, (rBlock + fBlock), 0);
-            this.transList.Add(trans);
+            if (transList.Count !=0)
+            {
+                Transaction trans = new Transaction("Mine Rewards", "", miner, (rBlock + fBlock), 0);
+                this.transList.Add(trans);
+            }
             this.merkleRoot = GenMerkleRoot(transList);
             this.hash = Mine();
         }
