@@ -33,7 +33,7 @@ namespace BlockchainAssignment
             this.minerAdd = miner;
             foreach (Transaction t in tList)
             {
-                this.rBlock += GetReward(t);
+                this.rBlock += (float)GetReward(t);
                 this.fBlock += t.GetFee();
             }
             if (transList.Count !=0)
@@ -107,20 +107,14 @@ namespace BlockchainAssignment
             return hash;
         }
 
-        public float GetReward(Transaction t)
+        public double GetReward(Transaction t)
         {
             float paid = t.GetAmount();
-            float fee = t.GetFee();
-
-            // percent of transaction to reward
-            float rewardPercent = 0.5f;
-            // weights to calculate reward
-            float rW1 = 0, rW2 = 14f, rW3 = 18f;
-
-            if (fee !=0) rW1 = (paid / (fee * rW2));
-            float reward = (float)(((paid * (rewardPercent / 100)) + rW3) / ((rW1 + rW2) * rW3));
+            double reward =  (9*paid)/((Math.Log(paid)+14)*18);
+            reward = reward * 12;
             if (Double.IsNaN(reward)) reward = 0;
-            return 1 + reward + fee;
+            reward = Math.Round(reward, 3);
+            return 1 + reward;
         }
 
         internal bool ValMerkle()
