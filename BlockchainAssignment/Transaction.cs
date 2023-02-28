@@ -40,7 +40,7 @@ namespace BlockchainAssignment
         private String CreateHash()
         {
             SHA256 hasher = SHA256Managed.Create();
-            String input = recipientAddress.ToString() + senderAddress.ToString() + amount;
+            String input = recipientAddress.ToString() + senderAddress.ToString() + amount + fee + timeStamp;
             Byte[] hashByte = hasher.ComputeHash(Encoding.UTF8.GetBytes(input));
             String hash = string.Empty;
             foreach (byte x in hashByte)
