@@ -37,7 +37,7 @@ namespace BlockchainAssignment
         }
 
         //provided code to create a hash for the block using SHA256
-        private String CreateHash()
+        internal String CreateHash()
         {
             SHA256 hasher = SHA256Managed.Create();
             String input = recipientAddress.ToString() + senderAddress.ToString() + amount + fee + timeStamp;

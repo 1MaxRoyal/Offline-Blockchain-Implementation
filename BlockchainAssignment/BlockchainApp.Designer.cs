@@ -55,6 +55,7 @@
             this.btn_CreateTransaction = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.btn_AllBlocks = new System.Windows.Forms.Button();
+            this.btn_ValidateBlock = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // outputBox
@@ -281,9 +282,9 @@
             // 
             // btn_NewBlock
             // 
-            this.btn_NewBlock.Location = new System.Drawing.Point(108, 431);
+            this.btn_NewBlock.Location = new System.Drawing.Point(109, 415);
             this.btn_NewBlock.Name = "btn_NewBlock";
-            this.btn_NewBlock.Size = new System.Drawing.Size(88, 45);
+            this.btn_NewBlock.Size = new System.Drawing.Size(125, 45);
             this.btn_NewBlock.TabIndex = 21;
             this.btn_NewBlock.Text = "Create New Block";
             this.btn_NewBlock.UseVisualStyleBackColor = true;
@@ -321,12 +322,23 @@
             this.btn_AllBlocks.UseVisualStyleBackColor = true;
             this.btn_AllBlocks.Click += new System.EventHandler(this.btn_AllBlocks_Click);
             // 
+            // btn_ValidateBlock
+            // 
+            this.btn_ValidateBlock.Location = new System.Drawing.Point(108, 466);
+            this.btn_ValidateBlock.Name = "btn_ValidateBlock";
+            this.btn_ValidateBlock.Size = new System.Drawing.Size(125, 45);
+            this.btn_ValidateBlock.TabIndex = 28;
+            this.btn_ValidateBlock.Text = "Validate Transactions";
+            this.btn_ValidateBlock.UseVisualStyleBackColor = true;
+            this.btn_ValidateBlock.Click += new System.EventHandler(this.btn_ValidateBlock_Click);
+            // 
             // BlockchainApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(910, 592);
+            this.Controls.Add(this.btn_ValidateBlock);
             this.Controls.Add(this.Btn_CheckBalance);
             this.Controls.Add(this.Btn_ValidateChain);
             this.Controls.Add(this.txt_MinerKey);
@@ -393,6 +405,7 @@
         private System.Windows.Forms.Button btn_CreateTransaction;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button btn_AllBlocks;
+        private System.Windows.Forms.Button btn_ValidateBlock;
     }
 }
 

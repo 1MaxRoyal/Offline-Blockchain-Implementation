@@ -181,5 +181,19 @@ namespace BlockchainAssignment
 
             return text;
         }
+
+        internal string ValidateBlock(int index)
+        {
+            foreach (Transaction t in Blocks[index].GetTrans())
+            {
+                string hash = t.GetHash();
+                if (hash != t.CreateHash())
+                {
+                    return "Block Transactions Invalid";
+                }
+            }
+
+            return "Block Transactions Valid";
+        }
     }
 }

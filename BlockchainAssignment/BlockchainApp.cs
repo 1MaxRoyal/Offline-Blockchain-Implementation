@@ -132,5 +132,19 @@ namespace BlockchainAssignment
             string output = $"{txt_PubKey.Text}\nBalance: {chain.GetBalance(txt_PubKey.Text)} SwagCoins\n{chain.GetAddTrans(txt_PubKey.Text)}";
             UpdateOutput(output);
         }
+
+        private void btn_ValidateBlock_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //display block info 
+                UpdateOutput(chain.ValidateBlock(Int32.Parse(txt_BlockIndex.Text)));
+            }
+            catch (Exception ex)
+            {
+                UpdateOutput("Block Doesnt Exist");
+            }
+            //using a try-catch to display an error message for anything that is entered into getblock that isnt a valid block
+        }
     }
 }
