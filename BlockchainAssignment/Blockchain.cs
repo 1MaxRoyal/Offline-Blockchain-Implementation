@@ -141,6 +141,19 @@ namespace BlockchainAssignment
                     }
                 }
             }
+
+            foreach (Transaction t in TransactionPool)
+            {
+                if (t.GetRecAdd() == address)
+                {
+                    bal += t.GetAmount();
+                }
+                if (t.GetSendAdd() == address)
+                {
+                    bal -= (t.GetAmount() + t.GetFee());
+                }
+            }
+
             return bal;
         }
 
@@ -164,6 +177,18 @@ namespace BlockchainAssignment
                         recList.Add(t);
                     }
                }
+            }
+
+            foreach (Transaction t in TransactionPool)
+            {
+                if (t.GetSendAdd() == add)
+                {
+                    sendList.Add(t);
+                }
+                if (t.GetRecAdd() == add)
+                {
+                    recList.Add(t);
+                }
             }
 
             string text = "\nSent:\n";
