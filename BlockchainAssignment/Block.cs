@@ -52,10 +52,12 @@ namespace BlockchainAssignment
             if (useThreading)
             {
                 this.hash = MineThreading();
+                Console.WriteLine("With Threading:\n");
             }
             else
             {
                 this.hash = Mine();
+                Console.WriteLine("Without Threading:\n");
             }
             stopWatch.Stop();
             // Get the elapsed time as a TimeSpan value.
@@ -64,7 +66,7 @@ namespace BlockchainAssignment
             string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
     ts.Hours, ts.Minutes, ts.Seconds,
     ts.Milliseconds / 10);
-            Console.WriteLine("RunTime " + elapsedTime);
+            Console.WriteLine("RunTime " + elapsedTime + "\n");
         }
 
         //constructor for the genesis block
@@ -184,9 +186,9 @@ namespace BlockchainAssignment
             }
             hash2 = hash;
             thread2complete = true;
-            Console.WriteLine("2 Complete");
-            Console.WriteLine(hash2);
-            Console.WriteLine(nonce2);
+            // Console.WriteLine("2 Complete");
+            //Console.WriteLine(hash2);
+            //Console.WriteLine(nonce2);
         }
 
         private void MineThread1()
@@ -200,9 +202,9 @@ namespace BlockchainAssignment
             }
             hash1 = hasher;
             thread1complete = true;
-            Console.WriteLine("1 Complete");
-            Console.WriteLine(hash1);
-            Console.WriteLine(nonce1);
+            //Console.WriteLine("1 Complete");
+            //Console.WriteLine(hash1);
+            //Console.WriteLine(nonce1);
         }
 
         public double GetReward(Transaction t)
