@@ -38,7 +38,7 @@ namespace BlockchainAssignment
             {
                 TransactionPool.Remove(t);
             }
-            Blocks.Add(new Block(lastBlock, Blocks[lastBlock].GetHash(), blockTrans, miner,threading));
+            Blocks.Add(new Block(lastBlock, Blocks[lastBlock].GetHash(),Blocks[lastBlock].GetDiff(),Blocks[lastBlock].GetTime(), blockTrans, miner,threading));
             return GetBlockTrans(lastBlock + 1);
         }
 

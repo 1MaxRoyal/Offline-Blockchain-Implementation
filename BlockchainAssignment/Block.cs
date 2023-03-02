@@ -16,7 +16,9 @@ namespace BlockchainAssignment
         private String hash, previousHash;
         private List<Transaction> transList = new List<Transaction>();
         //difficulty of a block
-        private int difficulty = 4;
+        private int difficulty;
+        //seconds that it should take to mine block
+        private int mineSeconds = 5;
         //minors address
         private string minerAdd;
         //rewards and fees of the block
@@ -27,13 +29,16 @@ namespace BlockchainAssignment
         int nonce1 = 0, nonce2 = 100000;
         string hash1, hash2;
         bool thread1complete = false, thread2complete = false;
+        //variable for adaptive diff
+        TimeSpan mineTime;
 
         //constructor for a block
-        public Block(int prevIndex, String prevHash, List<Transaction> tList, String miner, bool useThreading)
+        public Block(int prevIndex, String prevHash, int prevDiff, TimeSpan mineTime, List<Transaction> tList, String miner, bool useThreading)
         {
             this.createDate = DateTime.Now;
             this.index = prevIndex + 1;
             this.previousHash = prevHash;
+            this.difficulty = AdjustDifficulty(mineTime, prevDiff);
             this.transList = tList;
             this.minerAdd = miner;
             foreach (Transaction t in tList)
@@ -47,26 +52,34 @@ namespace BlockchainAssignment
                 this.transList.Add(trans);
             }
             this.merkleRoot = GenMerkleRoot(transList);
-            Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
+            //Stopwatch stopWatch = new Stopwatch();
+            //stopWatch.Start();
+            DateTime mineTimeStart = DateTime.Now;
             if (useThreading)
             {
                 this.hash = MineThreading();
-                Console.WriteLine("With Threading:\n");
+                //Console.WriteLine("With Threading:\n");
             }
             else
             {
                 this.hash = Mine();
-                Console.WriteLine("Without Threading:\n");
+                //Console.WriteLine("Without Threading:\n");
             }
-            stopWatch.Stop();
+            DateTime mineTimeEnd = DateTime.Now;
+            this.mineTime = mineTimeEnd - mineTimeStart;
+            //stopWatch.Stop();
             // Get the elapsed time as a TimeSpan value.
-            TimeSpan ts = stopWatch.Elapsed;
+            //TimeSpan ts = stopWatch.Elapsed;
 
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-    ts.Hours, ts.Minutes, ts.Seconds,
-    ts.Milliseconds / 10);
-            Console.WriteLine("RunTime " + elapsedTime + "\n");
+            //string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+            //ts.Hours, ts.Minutes, ts.Seconds,
+            //ts.Milliseconds / 10);
+            //Console.WriteLine("RunTime " + elapsedTime + "\n");
+        }
+
+        internal TimeSpan GetTime()
+        {
+            return this.mineTime;
         }
 
         //constructor for the genesis block
@@ -75,12 +88,21 @@ namespace BlockchainAssignment
             this.createDate = DateTime.Now;
             this.index = 0;
             this.previousHash = String.Empty;
+            this.difficulty = 1;
+            DateTime mineTimeStart = DateTime.Now;
             this.hash = Mine();
+            DateTime mineTimeEnd = DateTime.Now;
+            this.mineTime = mineTimeEnd - mineTimeStart;
         }
 
         internal int GetIndex()
         {
             return index;
+        }
+
+        internal int GetDiff()
+        {
+            return difficulty;
         }
 
         internal string GetPrevHash()
@@ -166,7 +188,7 @@ namespace BlockchainAssignment
                 this.nonce = nonce1;
                 return hash1;
             }
-            else 
+            else
             {
                 this.nonce = nonce2;
                 return hash2;
@@ -188,9 +210,9 @@ namespace BlockchainAssignment
             {
                 thread2complete = true;
             }
-           // Console.WriteLine("2 Complete");
-           // Console.WriteLine(hash2);
-           // Console.WriteLine(nonce2);
+            // Console.WriteLine("2 Complete");
+            // Console.WriteLine(hash2);
+            // Console.WriteLine(nonce2);
         }
 
         private void MineThread1()
@@ -272,6 +294,39 @@ namespace BlockchainAssignment
                 hashes = merkleLeaves;
             }
             return hashes[0];
+        }
+
+        private int AdjustDifficulty(TimeSpan prevTime, int prevDiff)
+        {
+            int difficulty1 = prevDiff;
+            //time how long it takes to generate blocks
+            TimeSpan time = prevTime;
+
+            Console.WriteLine($"Time to mine block {time}");
+            if (time < TimeSpan.FromSeconds(mineSeconds))
+            {
+                difficulty1++;
+                Console.WriteLine("Mining Too Easy\nDifficulty Increased to " + difficulty1);
+            }
+
+            if (time > TimeSpan.FromSeconds(mineSeconds))
+            {
+                difficulty1--;
+                Console.WriteLine("Mining Too Hard\nDifficulty Decreased to " + difficulty1);
+            }
+
+            if (difficulty1 < 0)
+            {
+                difficulty1 = 0;
+            }
+
+            if (difficulty1 > 6)
+            {
+                difficulty1 = 6;
+                Console.WriteLine("Max Dificulty of 6 Reached");
+            }
+
+            return difficulty1;
         }
     }
 }
