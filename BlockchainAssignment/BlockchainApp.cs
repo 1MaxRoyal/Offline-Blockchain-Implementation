@@ -109,7 +109,8 @@ namespace BlockchainAssignment
 
         private void Btn_NewBlock_Click(object sender, EventArgs e)
         {
-            UpdateOutput(chain.NewBlock(txt_MinerKey.Text));
+           // UpdateOutput(cb_Thread.Checked.ToString());
+           UpdateOutput(chain.NewBlock(txt_MinerKey.Text,cb_Thread.Checked));
         }
 
         private void btn_AllBlocks_Click(object sender, EventArgs e)

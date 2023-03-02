@@ -21,7 +21,7 @@ namespace BlockchainAssignment
         }
 
         //create a new block and return the information of the new block
-        public string NewBlock(String miner)
+        public string NewBlock(String miner, bool threading)
         {
             int lastBlock = Blocks.Count - 1;
             int count = 0;
@@ -38,7 +38,7 @@ namespace BlockchainAssignment
             {
                 TransactionPool.Remove(t);
             }
-            Blocks.Add(new Block(lastBlock, Blocks[lastBlock].GetHash(), blockTrans, miner));
+            Blocks.Add(new Block(lastBlock, Blocks[lastBlock].GetHash(), blockTrans, miner,threading));
             return GetBlockTrans(lastBlock + 1);
         }
 
