@@ -69,5 +69,11 @@ namespace BlockchainAssignment
         {
             return hash;
         }
+
+        internal bool ValHash(string cHash)
+        {
+            String reHash = CreateHash();
+            return reHash.Equals(cHash);
+        }
     }
 }

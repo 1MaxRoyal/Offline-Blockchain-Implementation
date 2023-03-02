@@ -212,7 +212,7 @@ namespace BlockchainAssignment
             foreach (Transaction t in Blocks[index].GetTrans())
             {
                 string hash = t.GetHash();
-                if (hash != t.CreateHash())
+                if (!t.ValHash(hash))
                 {
                     return "Block Transactions Invalid";
                 }
