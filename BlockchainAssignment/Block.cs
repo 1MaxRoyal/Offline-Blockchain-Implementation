@@ -163,16 +163,15 @@ namespace BlockchainAssignment
 
             if (thread1complete)
             {
-                this.nonce = nonce2;
-                return hash2;
-            }
-            else if (thread2complete)
-            {
                 this.nonce = nonce1;
                 return hash1;
             }
+            else 
+            {
+                this.nonce = nonce2;
+                return hash2;
+            }
 
-            return "";
         }
 
         private void MineThread2()
@@ -185,10 +184,13 @@ namespace BlockchainAssignment
                 hash = CreateHash(nonce2);
             }
             hash2 = hash;
-            thread2complete = true;
-            // Console.WriteLine("2 Complete");
-            //Console.WriteLine(hash2);
-            //Console.WriteLine(nonce2);
+            if (!thread1complete)
+            {
+                thread2complete = true;
+            }
+           // Console.WriteLine("2 Complete");
+           // Console.WriteLine(hash2);
+           // Console.WriteLine(nonce2);
         }
 
         private void MineThread1()
@@ -201,7 +203,10 @@ namespace BlockchainAssignment
                 hasher = CreateHash(nonce2);
             }
             hash1 = hasher;
-            thread1complete = true;
+            if (!thread2complete)
+            {
+                thread1complete = true;
+            }
             //Console.WriteLine("1 Complete");
             //Console.WriteLine(hash1);
             //Console.WriteLine(nonce1);
