@@ -87,7 +87,7 @@ namespace BlockchainAssignment
         internal String CreateHash()
         {
             SHA256 hasher = SHA256Managed.Create();
-            String input = index.ToString() + createDate.ToString() + previousHash + nonce + difficulty + rBlock;
+            String input = index.ToString() + createDate.ToString() + previousHash + nonce + difficulty + rBlock + fBlock + merkleRoot;
             Byte[] hashByte = hasher.ComputeHash(Encoding.UTF8.GetBytes(input));
             String hash = string.Empty;
             foreach (byte x in hashByte)
