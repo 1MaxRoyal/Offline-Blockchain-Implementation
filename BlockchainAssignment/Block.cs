@@ -299,17 +299,16 @@ namespace BlockchainAssignment
         private int AdjustDifficulty(TimeSpan prevTime, int prevDiff)
         {
             int difficulty1 = prevDiff;
-            //time how long it takes to generate blocks
             TimeSpan time = prevTime;
 
             Console.WriteLine($"Time to mine block {time}");
-            if (time < TimeSpan.FromSeconds(mineSeconds))
+            if (time < TimeSpan.FromSeconds(mineSeconds - 1))
             {
                 difficulty1++;
                 Console.WriteLine("Mining Too Easy\nDifficulty Increased to " + difficulty1);
             }
 
-            if (time > TimeSpan.FromSeconds(mineSeconds))
+            if (time > TimeSpan.FromSeconds(mineSeconds + 1))
             {
                 difficulty1--;
                 Console.WriteLine("Mining Too Hard\nDifficulty Decreased to " + difficulty1);
