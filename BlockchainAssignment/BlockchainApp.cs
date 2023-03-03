@@ -82,11 +82,7 @@ namespace BlockchainAssignment
                 //create and display tranasction
                 if (Wallet.Wallet.ValidatePrivateKey(txt_PrivKey.Text, txt_PubKey.Text))
                 {
-                    Transaction transaction = new Transaction(txt_PubKey.Text, txt_PrivKey.Text, txt_ReceiverKey.Text, float.Parse(txt_Amount.Text), float.Parse(txt_Fee.Text));
-                    UpdateOutput(transaction.GetTransactionInfo());
-                    //add tranasction to tranastion pool
-                    chain.AddTransaction(transaction);
-                    /*if (chain.GetBalance(txt_PubKey.Text) >= Double.Parse(txt_Fee.Text) + Double.Parse(txt_Amount.Text))
+                    if (chain.GetBalance(txt_PubKey.Text) >= Double.Parse(txt_Fee.Text) + Double.Parse(txt_Amount.Text))
                     {
                         Transaction transaction = new Transaction(txt_PubKey.Text, txt_PrivKey.Text, txt_ReceiverKey.Text, float.Parse(txt_Amount.Text), float.Parse(txt_Fee.Text));
                         UpdateOutput(transaction.GetTransactionInfo());
@@ -98,8 +94,7 @@ namespace BlockchainAssignment
                         UpdateOutput("Cannot Afford Transaction\n" +
                             $"Balance: {chain.GetBalance(txt_PubKey.Text)} SwagCoins\n" +
                             $"Transaction Cost: { Double.Parse(txt_Fee.Text) + Double.Parse(txt_Amount.Text)} SwagCoins");
-                    }
-                    */
+                    }               
                 }
                 else
                 {
