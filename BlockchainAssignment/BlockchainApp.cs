@@ -30,6 +30,7 @@ namespace BlockchainAssignment
         //on form load
         private void Form1_Load(object sender, EventArgs e)
         {
+            combo_mining.SelectedIndex = 1;
         }
 
         //when get block button is clicked
@@ -81,7 +82,11 @@ namespace BlockchainAssignment
                 //create and display tranasction
                 if (Wallet.Wallet.ValidatePrivateKey(txt_PrivKey.Text, txt_PubKey.Text))
                 {
-                    if (chain.GetBalance(txt_PubKey.Text) >= Double.Parse(txt_Fee.Text) + Double.Parse(txt_Amount.Text))
+                    Transaction transaction = new Transaction(txt_PubKey.Text, txt_PrivKey.Text, txt_ReceiverKey.Text, float.Parse(txt_Amount.Text), float.Parse(txt_Fee.Text));
+                    UpdateOutput(transaction.GetTransactionInfo());
+                    //add tranasction to tranastion pool
+                    chain.AddTransaction(transaction);
+                    /*if (chain.GetBalance(txt_PubKey.Text) >= Double.Parse(txt_Fee.Text) + Double.Parse(txt_Amount.Text))
                     {
                         Transaction transaction = new Transaction(txt_PubKey.Text, txt_PrivKey.Text, txt_ReceiverKey.Text, float.Parse(txt_Amount.Text), float.Parse(txt_Fee.Text));
                         UpdateOutput(transaction.GetTransactionInfo());
@@ -94,6 +99,7 @@ namespace BlockchainAssignment
                             $"Balance: {chain.GetBalance(txt_PubKey.Text)} SwagCoins\n" +
                             $"Transaction Cost: { Double.Parse(txt_Fee.Text) + Double.Parse(txt_Amount.Text)} SwagCoins");
                     }
+                    */
                 }
                 else
                 {
@@ -109,8 +115,12 @@ namespace BlockchainAssignment
 
         private void Btn_NewBlock_Click(object sender, EventArgs e)
         {
-           // UpdateOutput(cb_Thread.Checked.ToString());
-           UpdateOutput(chain.NewBlock(txt_MinerKey.Text,cb_Thread.Checked));
+            // UpdateOutput(cb_Thread.Checked.ToString());
+            if (combo_mining.SelectedIndex == 3 && txt_MinerKey.Text == "")
+            {
+                combo_mining.SelectedIndex = 1;
+            }
+            UpdateOutput(chain.NewBlock(txt_MinerKey.Text, cb_Thread.Checked, combo_mining.SelectedItem.ToString()));
         }
 
         private void btn_AllBlocks_Click(object sender, EventArgs e)
@@ -147,5 +157,6 @@ namespace BlockchainAssignment
             }
             //using a try-catch to display an error message for anything that is entered into getblock that isnt a valid block
         }
+
     }
 }

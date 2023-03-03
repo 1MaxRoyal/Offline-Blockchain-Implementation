@@ -57,6 +57,8 @@
             this.btn_AllBlocks = new System.Windows.Forms.Button();
             this.btn_ValidateBlock = new System.Windows.Forms.Button();
             this.cb_Thread = new System.Windows.Forms.CheckBox();
+            this.combo_mining = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // outputBox
@@ -211,7 +213,7 @@
             // 
             // txt_ReceiverKey
             // 
-            this.txt_ReceiverKey.Location = new System.Drawing.Point(333, 580);
+            this.txt_ReceiverKey.Location = new System.Drawing.Point(330, 580);
             this.txt_ReceiverKey.Multiline = true;
             this.txt_ReceiverKey.Name = "txt_ReceiverKey";
             this.txt_ReceiverKey.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
@@ -220,11 +222,11 @@
             // 
             // txt_MinerKey
             // 
-            this.txt_MinerKey.Location = new System.Drawing.Point(333, 556);
+            this.txt_MinerKey.Location = new System.Drawing.Point(445, 530);
             this.txt_MinerKey.Multiline = true;
             this.txt_MinerKey.Name = "txt_MinerKey";
             this.txt_MinerKey.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txt_MinerKey.Size = new System.Drawing.Size(463, 22);
+            this.txt_MinerKey.Size = new System.Drawing.Size(301, 22);
             this.txt_MinerKey.TabIndex = 25;
             // 
             // label3
@@ -239,7 +241,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(236, 559);
+            this.label4.Location = new System.Drawing.Point(349, 533);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 17);
             this.label4.TabIndex = 24;
@@ -343,12 +345,37 @@
             this.cb_Thread.Text = "Use Threading?";
             this.cb_Thread.UseVisualStyleBackColor = true;
             // 
+            // combo_mining
+            // 
+            this.combo_mining.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_mining.FormattingEnabled = true;
+            this.combo_mining.Items.AddRange(new object[] {
+            "Greedy",
+            "Altruistic",
+            "Random",
+            "Address Preference"});
+            this.combo_mining.Location = new System.Drawing.Point(445, 553);
+            this.combo_mining.Name = "combo_mining";
+            this.combo_mining.Size = new System.Drawing.Size(301, 24);
+            this.combo_mining.TabIndex = 30;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(316, 556);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(123, 17);
+            this.label5.TabIndex = 31;
+            this.label5.Text = "Mining Preference";
+            // 
             // BlockchainApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(910, 609);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.combo_mining);
             this.Controls.Add(this.cb_Thread);
             this.Controls.Add(this.btn_ValidateBlock);
             this.Controls.Add(this.Btn_CheckBalance);
@@ -419,6 +446,8 @@
         private System.Windows.Forms.Button btn_AllBlocks;
         private System.Windows.Forms.Button btn_ValidateBlock;
         private System.Windows.Forms.CheckBox cb_Thread;
+        private System.Windows.Forms.ComboBox combo_mining;
+        private System.Windows.Forms.Label label5;
     }
 }
 

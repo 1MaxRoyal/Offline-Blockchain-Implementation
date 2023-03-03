@@ -21,7 +21,7 @@ namespace BlockchainAssignment
         }
 
         //create a new block and return the information of the new block
-        public string NewBlock(String miner, bool threading)
+        public string NewBlock(String miner, bool threading, string mineType)
         {
             int lastBlock = Blocks.Count - 1;
             int count = 0;
@@ -33,13 +33,95 @@ namespace BlockchainAssignment
             {
                 count = TransactionPool.Count();
             }
-            List<Transaction> blockTrans = TransactionPool.GetRange(0, count);
+            List<Transaction> blockTrans = GetFromPool(mineType, count, miner);
             foreach (Transaction t in blockTrans)
             {
                 TransactionPool.Remove(t);
             }
             Blocks.Add(new Block(lastBlock, Blocks[lastBlock].GetHash(),Blocks[lastBlock].GetDiff(),Blocks[lastBlock].GetTime(), blockTrans, miner,threading));
             return GetBlockTrans(lastBlock + 1);
+        }
+
+        private List<Transaction> GetFromPool(string mineType, int count, string miner)
+        {
+            List<Transaction> list = new List<Transaction>();
+
+            switch (mineType)
+            {
+                default://default also acts as altruistic
+                    list = TransactionPool.GetRange(0, count);
+                    break;
+                case "Greedy":
+                    list = GreedyMine(count);
+                    break;
+                case "Random":
+                    list = RandomMine(count);
+                    break;
+                case "Address Preference":
+                    list = AddressMine(count, miner);
+                    break;
+            }
+
+            return list;
+        }
+
+        private List<Transaction> AddressMine(int count, string miner)
+        {
+            List<Transaction> list = new List<Transaction>();
+
+            foreach (Transaction t in TransactionPool)
+            {
+                if (list.Count < count)
+                {
+                    if(t.GetRecAdd() == miner)
+                    {
+                        list.Add(t);
+                    }
+                    if(t.GetSendAdd() == miner)
+                    {
+                        list.Add(t);
+                    }
+                }
+            }
+            return list;
+        }
+
+        private List<Transaction> RandomMine(int count)
+        {
+            List<Transaction> list = new List<Transaction>();
+
+
+            for (int i = 0; i < count; i++)
+            {
+                Random rand = new Random();
+                int random = rand.Next(count);
+                while (list.Contains(TransactionPool[random]))
+                {
+                    random = rand.Next(count);
+                }
+                list.Add(TransactionPool[random]);
+            }
+            return list;
+        }
+
+        private List<Transaction> GreedyMine(int count)
+        {
+            List<Transaction> list = new List<Transaction>();
+            list = TransactionPool.GetRange(0, count);
+            foreach (Transaction t in TransactionPool)
+            {
+                foreach (Transaction y in list)
+                {
+                    if (t.GetAmount() + t.GetFee() > y.GetAmount() + y .GetFee())
+                    {
+                        list.Remove(y);
+                        list.Add(t);
+                        break;
+                    }
+
+                }
+            }
+            return list;
         }
 
         //returns a string for all information in a block
